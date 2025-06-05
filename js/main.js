@@ -1,44 +1,33 @@
 import { Canvas } from "./Canvas.js";
 import { ToolManager } from "./ToolManager.js";
 
-class App {
-  constructor() {
-    this.canvas = new Canvas("canvas");
-    this.toolManager = new ToolManager(this.canvas);
-    this.setupEventListeners();
-  }
+// Initialize the application
+const canvas = new Canvas("canvas");
+const toolManager = new ToolManager(canvas);
+let isMouseDown = false;
+setupEventListeners();
 
-  setupEventListeners() {
-    const canvas = this.canvas.element;
+function setupEventListeners() {
+  const canvasElement = canvas.element;
 
-    canvas.addEventListener("mousedown", (e) => {
-      const currentTool = this.toolManager.getCurrentTool();
-      if (currentTool) {
-        currentTool.startDrawing(e);
-      }
-    });
+  canvasElement.addEventListener("mousedown", (e) => {
+    isMouseDown = true;
+    const currentTool = toolManager.getCurrentTool();
+    currentTool.startDrawing(e);
+  });
 
-    canvas.addEventListener("mousemove", (e) => {
-      const currentTool = this.toolManager.getCurrentTool();
-      if (currentTool) {
-        currentTool.draw(e);
-      }
-    });
+  canvasElement.addEventListener("mousemove", (e) => {
+    if (isMouseDown) {
+      const currentTool = toolManager.getCurrentTool();
+      currentTool.draw(e);
+    }
+  });
 
-    canvas.addEventListener("mouseup", () => {
-      const currentTool = this.toolManager.getCurrentTool();
-      if (currentTool) {
-        currentTool.stopDrawing();
-      }
-    });
+  canvasElement.addEventListener("mouseup", () => {
+    isMouseDown = false;
+  });
 
-    canvas.addEventListener("mouseout", () => {
-      const currentTool = this.toolManager.getCurrentTool();
-      if (currentTool) {
-        currentTool.stopDrawing();
-      }
-    });
-  }
+  canvasElement.addEventListener("mouseout", () => {
+    isMouseDown = false;
+  });
 }
-
-new App();
