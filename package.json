@@ -1,0 +1,14 @@
+{
+  "name": "ms-paint-interview",
+  "version": "1.0.0",
+  "description": "Simple MS Paint clone for Canva interview",
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server . -p 3000 -o",
+    "start": "npx http-server . -p 3000"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
