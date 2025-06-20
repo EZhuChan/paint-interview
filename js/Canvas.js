@@ -1,6 +1,11 @@
 export class Canvas {
+  /**
+   * @param {string} canvasId
+   */
   constructor(canvasId) {
+    /** @type {HTMLCanvasElement} */
     this.element = document.getElementById(canvasId);
+    /** @type {CanvasRenderingContext2D} */
     this.ctx = this.element.getContext("2d");
   }
 

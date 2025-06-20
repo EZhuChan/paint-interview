@@ -1,10 +1,10 @@
 import { Canvas } from "./Canvas.js";
 import { ToolManager } from "./ToolManager.js";
 
-// Initialize the application
 const canvas = new Canvas("canvas");
 const toolManager = new ToolManager(canvas);
 let isMouseDown = false;
+
 setupEventListeners();
 
 function setupEventListeners() {
@@ -27,7 +27,7 @@ function setupEventListeners() {
     isMouseDown = false;
   });
 
-  canvasElement.addEventListener("mouseout", () => {
-    isMouseDown = false;
-  });
+  // canvasElement.addEventListener("mouseout", () => {
+  //   isMouseDown = false;
+  // });
 }

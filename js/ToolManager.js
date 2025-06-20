@@ -1,7 +1,14 @@
 import { DrawingTool } from "./DrawingTool.js";
 import { EraserTool } from "./EraserTool.js";
 
+/**
+ * @typedef {import('./Canvas.js').Canvas} Canvas
+ */
+
 export class ToolManager {
+  /**
+   * @param {Canvas} canvas
+   */
   constructor(canvas) {
     this.canvas = canvas;
     this.currentTool = null;

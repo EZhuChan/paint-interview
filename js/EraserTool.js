@@ -1,4 +1,11 @@
+/**
+ * @typedef {import('./Canvas.js').Canvas} Canvas
+ */
+
 export class EraserTool {
+  /**
+   * @param {Canvas} canvas
+   */
   constructor(canvas) {
     this.canvas = canvas;
   }
