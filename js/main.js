@@ -23,11 +23,29 @@ function setupEventListeners() {
     }
   });
 
-  canvasElement.addEventListener("mouseup", () => {
+  canvasElement.addEventListener("mouseup", (e) => {
+    const currentTool = toolManager.getCurrentTool();
+    currentTool.stopDrawing(e);
+  });
+
+  document.addEventListener("mouseup", () => {
     isMouseDown = false;
+    console.log("Mouse up", isMouseDown);
   });
 
   // canvasElement.addEventListener("mouseout", () => {
   //   isMouseDown = false;
   // });
+
+  canvasElement.addEventListener("mouseleave", (e) => {
+    const currentTool = toolManager.getCurrentTool();
+    currentTool.stopDrawing(e);
+  });
+
+  canvasElement.addEventListener("mouseenter", (e) => {
+    const currentTool = toolManager.getCurrentTool();
+    if (isMouseDown) {
+      currentTool.startDrawing(e);
+    }
+  });
 }

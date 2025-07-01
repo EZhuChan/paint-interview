@@ -1,5 +1,6 @@
 import { DrawingTool } from "./DrawingTool.js";
 import { EraserTool } from "./EraserTool.js";
+import { SquareTool } from "./SquareTool.js";
 
 /**
  * @typedef {import('./Canvas.js').Canvas} Canvas
@@ -25,6 +26,11 @@ export class ToolManager {
         icon: "🧹",
         instance: new EraserTool(this.canvas),
       },
+      {
+        name: "Square",
+        icon: "⬜",
+        instance: new SquareTool(this.canvas),
+      }
     ];
 
     this.createToolbar();
